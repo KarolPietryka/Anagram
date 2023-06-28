@@ -1,0 +1,4 @@
+app:
+  zooplus:
+    cli:
+      textArt: true
