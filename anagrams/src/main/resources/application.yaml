@@ -2,3 +2,6 @@ app:
   zooplus:
     cli:
       textArt: true
+  resources:
+    dictionary:
+      dictionaryPath: "/dictionary"
