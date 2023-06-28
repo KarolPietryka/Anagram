@@ -1,0 +1,34 @@
+# IntelliJ IDEA
+.idea/
+
+# Compiled class files
+target/
+
+# Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Gradle
+.gradle/
+build/
+
+# Logs
+*.log
+*.log.*
+log/
+logs/
+
+# IntelliJ-specific files
+*.iml
+*.ipr
+*.iws
+out/
+.idea_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
