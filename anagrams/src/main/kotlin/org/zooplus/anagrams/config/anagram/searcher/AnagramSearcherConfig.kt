@@ -9,15 +9,15 @@ import org.zooplus.anagrams.service.anagram.searcher.impl.SortedDictionaryAnagra
 import org.zooplus.anagrams.service.anagram.searcher.impl.UnsortedDictionaryAnagramSearcher
 
 @Configuration
-class AnagramSearcherConfig {
+open class AnagramSearcherConfig {
     @Bean
     @ConditionalOnProperty(value = ["app.zooplus.anagram.searcher.type"], havingValue = "unsorted", matchIfMissing = true)
-    fun unsortedDictionaryAnagramSearcher(directoryReader: DictionaryReader): AnagramSearcher {
+    open fun unsortedDictionaryAnagramSearcher(directoryReader: DictionaryReader): AnagramSearcher {
         return UnsortedDictionaryAnagramSearcher(directoryReader)
     }
 
     @Bean
     @ConditionalOnProperty(value = ["app.zooplus.anagram.searcher.type"], havingValue = "sorted")
-    fun sortedAnagramSearcher(directoryReader: DictionaryReader): AnagramSearcher {
+    open fun sortedAnagramSearcher(directoryReader: DictionaryReader): AnagramSearcher {
         return SortedDictionaryAnagramSearcher(directoryReader)
     }}

@@ -5,6 +5,6 @@ app:
     anagram:
       searcher:
         type: "sorted"
-  resources:
-    dictionary:
-      dictionaryPath: "/dictionary"
+    resources:
+      dictionary:
+        dictionaryPath: "/dictionary"
