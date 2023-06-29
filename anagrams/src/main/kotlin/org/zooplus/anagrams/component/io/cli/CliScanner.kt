@@ -1,7 +1,7 @@
 package org.zooplus.anagrams.component.io.cli
 
 import org.springframework.stereotype.Component
-import org.zooplus.anagrams.config.io.cli.CliScannerProperties
+import org.zooplus.anagrams.config.props.io.cli.CliScannerProperties
 import org.zooplus.anagrams.service.anagram.searcher.AnagramSearcher
 import java.util.*
 

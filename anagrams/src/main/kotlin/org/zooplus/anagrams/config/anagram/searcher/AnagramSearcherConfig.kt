@@ -1,4 +1,4 @@
-package org.zooplus.anagrams.config.io.anagram.searcher
+package org.zooplus.anagrams.config.anagram.searcher
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean

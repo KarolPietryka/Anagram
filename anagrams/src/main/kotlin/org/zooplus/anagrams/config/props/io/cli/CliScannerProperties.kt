@@ -1,4 +1,4 @@
-package org.zooplus.anagrams.config.io.cli
+package org.zooplus.anagrams.config.props.io.cli
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
