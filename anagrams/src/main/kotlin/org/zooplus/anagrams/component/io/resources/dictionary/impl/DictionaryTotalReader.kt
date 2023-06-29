@@ -1,18 +1,20 @@
 package org.zooplus.anagrams.component.io.resources.dictionary.impl
 
-import org.springframework.core.io.ClassPathResource
+import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 import org.zooplus.anagrams.component.io.resources.dictionary.DictionaryReader
 import org.zooplus.anagrams.config.io.resources.dictionary.DictionaryProperties
 import org.zooplus.anagrams.model.io.dictionary.DirectoryContent
-import java.io.BufferedReader
+import org.zooplus.anagrams.model.io.dictionary.trance.DictionaryTranceEntity
 import java.nio.file.Files
 import java.nio.file.Paths
 
-@Component
-class DictionaryTranceReader constructor(
+@Primary
+@Component("dictionaryTotalReader")
+class DictionaryTotalReader constructor(
     private val dictionaryProperties: DictionaryProperties,
-): DictionaryReader {
+    ): DictionaryReader {
     override fun getFromDirectory(): DirectoryContent {
         val path = Paths.get(dictionaryProperties.dictionaryPath)
         val allLines = mutableListOf<String>()
@@ -22,8 +24,6 @@ class DictionaryTranceReader constructor(
                 allLines.addAll(Files.readAllLines(file))
             }
         }
-
-        //return allLines
-        return DirectoryContent(emptyList())
+        return DirectoryContent(allLines)
     }
 }
