@@ -2,6 +2,9 @@ app:
   zooplus:
     cli:
       textArt: true
+    anagram:
+      searcher:
+        type: "sorted"
   resources:
     dictionary:
       dictionaryPath: "/dictionary"

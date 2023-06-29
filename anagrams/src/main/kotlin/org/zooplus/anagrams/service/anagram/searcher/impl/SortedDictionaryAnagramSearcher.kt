@@ -6,13 +6,13 @@ import org.zooplus.anagrams.service.anagram.AnagramChecker
 import org.zooplus.anagrams.service.anagram.searcher.AbstractAnagramSearcher
 import org.zooplus.anagrams.service.anagram.searcher.AnagramSearcher
 
-class UnsortedDictionaryAnagramSearcher constructor(
+class SortedDictionaryAnagramSearcher(
     directoryReader: DictionaryReader
 ): AbstractAnagramSearcher(directoryReader) {
     override fun getAnagram(input: String, directoryContent: DirectoryContent): String? {
         var longestAnagram: String? = null
         directoryContent.dictionaryContent.forEach {
-            if (AnagramChecker.check(input, it) && (longestAnagram == null || it.length > (longestAnagram?.length ?: 0))) {
+            if (AnagramChecker.check(input, it)) {
                 longestAnagram = it
             }
         }
