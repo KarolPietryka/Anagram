@@ -1,8 +1,7 @@
-package org.zooplus.anagrams.service.anagram.impl
+package org.zooplus.anagrams.service.anagram.searcher.impl
 
-import org.springframework.stereotype.Service
 import org.zooplus.anagrams.component.io.resources.dictionary.DictionaryReader
-import org.zooplus.anagrams.service.anagram.AnagramSearcher
+import org.zooplus.anagrams.service.anagram.searcher.AnagramSearcher
 
 class UnsortedDictionaryAnagramSearcher constructor(
     private val directoryReader: DictionaryReader
