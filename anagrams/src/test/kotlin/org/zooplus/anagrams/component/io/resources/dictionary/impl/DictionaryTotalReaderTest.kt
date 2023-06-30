@@ -5,6 +5,7 @@ import com.google.common.jimfs.Jimfs
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.assertThrows
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
@@ -43,5 +44,19 @@ internal class DictionaryTotalReaderTest {
         val expectedWords = listOf("hello", "world", "test", "input")
         assertEquals(expectedWords, directoryContent.dictionaryContent)
 
+    }
+
+    @Test
+    fun `should throw an exception when the directory does not exist`() {
+        val nonExistentPath = "/nonexistent"
+
+        val dictionaryProperties: DictionaryProperties = mock()
+        whenever(dictionaryProperties.dictionaryPath).thenReturn(nonExistentPath)
+
+        val reader = DictionaryTotalReader(fs, dictionaryProperties)
+
+        assertThrows<java.nio.file.NoSuchFileException> {
+            reader.getFromDirectory()
+        }
     }
 }
