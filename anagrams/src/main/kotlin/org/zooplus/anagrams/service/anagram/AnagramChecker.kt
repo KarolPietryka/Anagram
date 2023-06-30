@@ -1,14 +1,15 @@
 package org.zooplus.anagrams.service.anagram
 
 object AnagramChecker {
-    const val ACSII_BOTTOM_CHAR = 'a'
     fun check(input: String, word: String): Boolean {
-        if (input.length != word.length) return false
+        val normalizedInput = input.replace(" ", "").lowercase()
+        val normalizedWord = word.replace(" ", "").lowercase()
 
-        val charCounts = IntArray(256)
-        for (i in input.indices) {
-            charCounts[input[i].lowercaseChar() - ACSII_BOTTOM_CHAR]++
-            charCounts[word[i].lowercaseChar() - ACSII_BOTTOM_CHAR]--
+        if (normalizedInput.length != normalizedWord.length) return false
+        val charCounts = IntArray(26)
+        for (i in normalizedInput.indices) {
+            charCounts[normalizedInput[i] - 'a']++
+            charCounts[normalizedWord[i] - 'a']--
         }
 
         for (count in charCounts) {
