@@ -1,4 +1,4 @@
-package org.zooplus.anagrams.config.anagram.io.resources
+package org.zooplus.anagrams.config.io.resources
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

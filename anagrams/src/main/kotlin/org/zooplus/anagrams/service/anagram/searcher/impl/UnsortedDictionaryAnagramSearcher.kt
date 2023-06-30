@@ -1,10 +1,9 @@
 package org.zooplus.anagrams.service.anagram.searcher.impl
 
-import org.zooplus.anagrams.component.io.resources.dictionary.DictionaryReader
+import org.zooplus.anagrams.component.io.resources.dictionary.reader.DictionaryReader
 import org.zooplus.anagrams.model.io.dictionary.DirectoryContent
 import org.zooplus.anagrams.service.anagram.AnagramChecker
 import org.zooplus.anagrams.service.anagram.searcher.AbstractAnagramSearcher
-import org.zooplus.anagrams.service.anagram.searcher.AnagramSearcher
 
 class UnsortedDictionaryAnagramSearcher constructor(
     directoryReader: DictionaryReader

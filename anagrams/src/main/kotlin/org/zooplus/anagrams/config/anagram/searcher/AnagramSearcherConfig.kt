@@ -3,7 +3,7 @@ package org.zooplus.anagrams.config.anagram.searcher
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.zooplus.anagrams.component.io.resources.dictionary.DictionaryReader
+import org.zooplus.anagrams.component.io.resources.dictionary.reader.DictionaryReader
 import org.zooplus.anagrams.service.anagram.searcher.AnagramSearcher
 import org.zooplus.anagrams.service.anagram.searcher.impl.SortedDictionaryAnagramSearcher
 import org.zooplus.anagrams.service.anagram.searcher.impl.UnsortedDictionaryAnagramSearcher

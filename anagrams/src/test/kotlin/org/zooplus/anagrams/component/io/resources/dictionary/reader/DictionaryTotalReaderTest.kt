@@ -1,34 +1,43 @@
-package org.zooplus.anagrams.component.io.resources.dictionary.impl
+package org.zooplus.anagrams.component.io.resources.dictionary.reader
 
 import com.google.common.jimfs.Configuration
 import com.google.common.jimfs.Jimfs
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.assertThrows
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
+import org.zooplus.anagrams.component.io.resources.dictionary.reader.impl.DictionaryTotalReader
 import org.zooplus.anagrams.config.props.io.resources.dictionary.DictionaryProperties
 import java.nio.file.FileSystem
 import java.nio.file.Files
+import java.nio.file.Path
 
-@SpringBootTest
-@ActiveProfiles("test")
 internal class DictionaryTotalReaderTest {
-    @Autowired
     private lateinit var fs: FileSystem
+    private lateinit var dirPath: Path
 
-    @Autowired
-    private lateinit var dictionaryProperties: DictionaryProperties
+    @BeforeEach
+    fun setup() {
+        fs = Jimfs.newFileSystem(Configuration.unix())
+        dirPath = fs.getPath("/test")
+
+        Files.createDirectory(dirPath)
+    }
+    @AfterEach
+    fun teardown() {
+        fs.close()
+    }
+
     @Test
     fun `should return all words from all files in the directory`() {
         val dirPath = fs.getPath("/test")
-
-        Files.createDirectory(dirPath)
-
         val file1 = dirPath.resolve("file1.txt")
         val file2 = dirPath.resolve("file2.txt")
 

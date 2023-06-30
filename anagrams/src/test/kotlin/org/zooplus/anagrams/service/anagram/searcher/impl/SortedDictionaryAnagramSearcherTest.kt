@@ -8,7 +8,7 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.whenever
-import org.zooplus.anagrams.component.io.resources.dictionary.DictionaryReader
+import org.zooplus.anagrams.component.io.resources.dictionary.reader.DictionaryReader
 import org.zooplus.anagrams.model.io.dictionary.DirectoryContent
 
 @ExtendWith(MockitoExtension::class)
