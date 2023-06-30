@@ -23,7 +23,7 @@ internal class SortedDictionaryAnagramSearcherTest {
     @Test
     fun `should return the longest anagram from the sorted dictionary`() {
         val words = listOf("hello", "world", "dworl", "l o r d w ")
-        val sortedWords = words.sortedWith(compareByDescending { it.replace(" ", "").length })
+        val sortedWords = words.sortedWith(compareByDescending { it.length })
         val directoryContent = DirectoryContent(sortedWords)
         whenever(directoryReader.getFromDirectory()).thenReturn(directoryContent)
         val anagram = searcher.getAnagram("world")
@@ -32,7 +32,7 @@ internal class SortedDictionaryAnagramSearcherTest {
     @Test
     fun `should return the longest anagram from the sorted dictionary for 'astronomer'`() {
         val words = listOf("hello", "world", "moon starer", "astronome")
-        val sortedWords = words.sortedWith(compareByDescending { it.replace(" ", "").length })
+        val sortedWords = words.sortedWith(compareByDescending { it.length })
         val directoryContent = DirectoryContent(sortedWords)
         whenever(directoryReader.getFromDirectory()).thenReturn(directoryContent)
         val anagram = searcher.getAnagram("astronomer")

@@ -10,13 +10,12 @@ class SortedDictionaryAnagramSearcher(
     directoryReader: DictionaryReader
 ): AbstractAnagramSearcher(directoryReader) {
     override fun getAnagram(input: String, directoryContent: DirectoryContent): String? {
-        var longestAnagram: String? = null
         directoryContent.dictionaryContent.forEach {
             if (AnagramChecker.check(input, it)) {
-                longestAnagram = it
+                return it
             }
         }
-        return longestAnagram
+        return null
     }
 
 }
