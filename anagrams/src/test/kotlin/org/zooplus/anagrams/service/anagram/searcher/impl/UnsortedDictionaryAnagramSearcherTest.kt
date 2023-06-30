@@ -25,29 +25,28 @@ internal class UnsortedDictionaryAnagramSearcherTest {
 
     @Test
     fun `should return the longest anagram from the dictionary`() {
-        val words = listOf("hello", "lordw")
+        val words = listOf("hello", "l o r d w")
         val directoryContent = DirectoryContent(words)
-
-        // mock the dictionary reader
         whenever(directoryReader.getFromDirectory()).thenReturn(directoryContent)
-
-        // 'world' has two anagrams in the list, 'dworl' and 'lordw'. 'lordw' is the longest.
         val anagram = searcher.getAnagram("world")
-
-        assertEquals("lordw", anagram)
+        assertEquals("l o r d w", anagram)
     }
 
     @Test
     fun `should return the first anagram from the dictionary`() {
-        val words = listOf("hello", "world", "dworl", "lordw")
+        val words = listOf("hello", "world", "d w o r l", "l o r d w")
         val directoryContent = DirectoryContent(words)
-
-        // mock the dictionary reader
         whenever(directoryReader.getFromDirectory()).thenReturn(directoryContent)
-
-        // 'world' has two anagrams in the list, 'dworl' and 'lordw'. 'dworl' is the first.
         val anagram = searcher.getAnagram("world")
+        assertEquals("d w o r l", anagram)
+    }
 
-        assertEquals("dworl", anagram)
+    @Test
+    fun `should return the longest anagram from the unsorted dictionary for 'astronomer'`() {
+        val words = listOf("hello", "world", "moon starer", "astronome")
+        val directoryContent = DirectoryContent(words)
+        whenever(directoryReader.getFromDirectory()).thenReturn(directoryContent)
+        val anagram = searcher.getAnagram("astronomer")
+        assertEquals("moon starer", anagram)
     }
 }
