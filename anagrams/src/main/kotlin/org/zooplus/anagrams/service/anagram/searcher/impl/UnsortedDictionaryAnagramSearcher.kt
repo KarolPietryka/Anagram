@@ -12,7 +12,7 @@ class UnsortedDictionaryAnagramSearcher constructor(
     override fun getAnagram(input: String, directoryContent: DirectoryContent): String? {
         var longestAnagram: String? = null
         directoryContent.dictionaryContent.forEach {
-            if (AnagramChecker.check(input, it) && (longestAnagram == null || it.length > (longestAnagram?.length ?: 0))) {
+            if (it != input && AnagramChecker.check(input, it) && (longestAnagram == null || it.length > (longestAnagram?.length ?: 0))) {
                 longestAnagram = it
             }
         }
