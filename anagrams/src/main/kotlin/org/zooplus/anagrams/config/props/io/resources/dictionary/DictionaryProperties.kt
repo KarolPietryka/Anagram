@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component
 
 @Component
 @ConfigurationProperties(prefix = "app.zooplus.resources.dictionary", ignoreUnknownFields = true)
-class DictionaryProperties {
-    lateinit var dictionaryPath: String
+open class DictionaryProperties {
+     open var dictionaryPath: String = ""
 }
