@@ -10,9 +10,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.assertThrows
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
 import org.zooplus.anagrams.component.io.resources.dictionary.reader.impl.DictionaryTotalReader
 import org.zooplus.anagrams.config.props.io.resources.dictionary.DictionaryProperties
 import java.nio.file.FileSystem
@@ -45,7 +42,7 @@ internal class DictionaryTotalReaderTest {
         Files.write(file2, listOf("test", "input"))
 
         val dictionaryProperties: DictionaryProperties = mock()
-        whenever(dictionaryProperties.dictionaryPath).thenReturn(dirPath.toString())
+        whenever(dictionaryProperties.dictionaryDirPath).thenReturn(dirPath.toString())
 
         val reader = DictionaryTotalReader(fs, dictionaryProperties)
         val directoryContent = reader.getFromDirectory()
@@ -60,7 +57,7 @@ internal class DictionaryTotalReaderTest {
         val nonExistentPath = "/nonexistent"
 
         val dictionaryProperties: DictionaryProperties = mock()
-        whenever(dictionaryProperties.dictionaryPath).thenReturn(nonExistentPath)
+        whenever(dictionaryProperties.dictionaryDirPath).thenReturn(nonExistentPath)
 
         val reader = DictionaryTotalReader(fs, dictionaryProperties)
 

@@ -15,7 +15,7 @@ class DictionaryTotalReader constructor(
     private val dictionaryProperties: DictionaryProperties,
     ): DictionaryReader {
     override fun getFromDirectory(): DirectoryContent {
-        val path = fs.getPath(dictionaryProperties.dictionaryPath)
+        val path = fs.getPath(dictionaryProperties.dictionaryDirPath)
         val allLines = mutableListOf<String>()
 
         Files.walk(path).use { files ->
