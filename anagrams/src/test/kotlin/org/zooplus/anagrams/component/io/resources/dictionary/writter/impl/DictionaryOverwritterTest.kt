@@ -52,7 +52,7 @@ internal class DictionaryOverwritterTest {
         val dictionaryProperties: DictionaryProperties = mock()
         whenever(dictionaryProperties.dictionaryDirPath).thenReturn(dirPath.toString())
 
-        DictionaryOverwritter(fs, dictionaryProperties,resourcesService).write(
+        val dictionary = DictionaryOverwritter(fs, dictionaryProperties,resourcesService).write(
             listOf("hello", "input", "test", "world"),
             "sorted.txt"
         )
@@ -63,6 +63,7 @@ internal class DictionaryOverwritterTest {
         verify(resourcesService).deleteExisting(dirPath)
         assertEquals(expectedSortedContent, sortedContent)
         assertEquals(3, countFilesInDirectory(dirPath))
+        assertEquals(dictionary, dirPath.resolve("/test/sorted.txt"))
     }
 
     private fun countFilesInDirectory(directoryPath: Path): Int {

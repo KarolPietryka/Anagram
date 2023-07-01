@@ -44,7 +44,7 @@ internal class DictionaryAdderTest {
         val dictionaryProperties: DictionaryProperties = mock()
         whenever(dictionaryProperties.dictionaryDirPath).thenReturn(dirPath.toString())
 
-        DictionaryAdder(fs, dictionaryProperties, resourcesService).write(
+        val dictionary = DictionaryAdder(fs, dictionaryProperties, resourcesService).write(
             listOf("hello", "input", "test", "world"),
             newDirRelPath
         )
@@ -55,6 +55,7 @@ internal class DictionaryAdderTest {
         verify(resourcesService).deleteExisting(dirPath.resolve(newDirRelPath).parent)
         assertEquals(1, countFilesInDirectory(dirPath.resolve(newDirRelPath)))
         assertEquals(expectedContent, content)
+        assertEquals(dirPath.resolve(newDirRelPath), dictionary)
     }
 
     private fun countFilesInDirectory(dictionaryPath: Path): Int {

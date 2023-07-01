@@ -14,9 +14,10 @@ class DictionaryAdder constructor(
     private val dictionaryProperties: DictionaryProperties,
     private val resourcesService: ResourcesService,
 ): DictionaryWriter {
-    override fun write(words: List<String>, newDictionaryPath: String) {
-        val dictionaryDir = fs.getPath(dictionaryProperties.dictionaryDirPath).resolve(newDictionaryPath)
-        writeIntoDictionary(dictionaryDir, words)
+    override fun write(dictionaryContent: List<String>, newDictionaryPath: String): Path {
+        val dictionaryPath = fs.getPath(dictionaryProperties.dictionaryDirPath).resolve(newDictionaryPath)
+        writeIntoDictionary(dictionaryPath, dictionaryContent)
+        return dictionaryPath
     }
     private fun writeIntoDictionary(dictionaryFilePath: Path, words: List<String>) {
         Files.createDirectories(dictionaryFilePath.parent)

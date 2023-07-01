@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component
 import org.zooplus.anagrams.component.io.resources.dictionary.reader.DictionaryReader
 import org.zooplus.anagrams.component.io.resources.dictionary.writter.DictionaryWriter
 import org.zooplus.anagrams.config.props.io.resources.dictionary.DictionaryProperties
+import org.zooplus.anagrams.service.io.resources.ResourcesService
+import java.nio.file.Path
+import javax.annotation.PostConstruct
+import javax.annotation.PreDestroy
 
 @Component
 @Order(1)
@@ -20,9 +24,19 @@ class SortDictionary(
     @Qualifier("dictionaryAdder")
     private val dictionaryWriter: DictionaryWriter,
     private val dictionaryProperties: DictionaryProperties,
+    private val resourcesService: ResourcesService,
 ): ApplicationRunner {
+    private var createdSortedDir: Path? = null
     override fun run(args: ApplicationArguments?) {
         val sortedContent = dictionaryReader.getFromDirectory().dictionaryContent.sorted()
-        dictionaryWriter.write(sortedContent, dictionaryProperties.sortedDictionaryPath)
+        createdSortedDir = dictionaryWriter.write(sortedContent, dictionaryProperties.sortedDictionaryPath)
+    }
+    @PostConstruct
+    fun registerShutdownHook() {
+        Runtime.getRuntime().addShutdownHook(Thread(this::cleanup))
+    }
+    @PreDestroy
+    private fun cleanup() {
+        createdSortedDir?.let { resourcesService.deleteExisting(it.parent) }
     }
 }

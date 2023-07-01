@@ -14,10 +14,11 @@ class DictionaryOverwritter(
     private val dictionaryProperties: DictionaryProperties,
     private val resourcesService: ResourcesService
 ): DictionaryWriter {
-    override fun write(dictionaryContent: List<String>, newDictionaryPath: String) {
+    override fun write(dictionaryContent: List<String>, newDictionaryPath: String): Path {
         val dictionaryDir = fs.getPath(dictionaryProperties.dictionaryDirPath)
         resourcesService.deleteExisting(dictionaryDir)
         writeIntoDictionary(dictionaryDir.resolve(newDictionaryPath),  dictionaryContent)
+        return dictionaryDir.resolve(newDictionaryPath)
     }
 
     private fun writeIntoDictionary(dictionaryFilePath: Path, words: List<String>) {

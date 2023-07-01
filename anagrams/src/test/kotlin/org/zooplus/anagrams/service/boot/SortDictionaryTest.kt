@@ -13,6 +13,7 @@ import org.zooplus.anagrams.component.boot.SortDictionary
 import org.zooplus.anagrams.component.io.resources.dictionary.reader.DictionaryReader
 import org.zooplus.anagrams.component.io.resources.dictionary.writter.DictionaryWriter
 import org.zooplus.anagrams.config.props.io.resources.dictionary.DictionaryProperties
+import org.zooplus.anagrams.service.io.resources.ResourcesService
 import java.nio.file.FileSystem
 import java.nio.file.Files
 import java.nio.file.Path
@@ -41,6 +42,8 @@ internal class SortDictionaryTest {
     private lateinit var dictionaryWriter: DictionaryWriter
     @Mock
     private lateinit var dictionaryProperties: DictionaryProperties
+    @Mock
+    private lateinit var resourcesService: ResourcesService
     //@Test
     fun `should return all words from all files in the directory`() {
         val dirPath = fs.getPath("/test")
@@ -54,7 +57,7 @@ internal class SortDictionaryTest {
         whenever(dictionaryProperties.sortedDictionaryPath).thenReturn("sorted.txt")
 
 
-        SortDictionary(dictionaryReader, dictionaryWriter, dictionaryProperties).run(null)
+        SortDictionary(dictionaryReader, dictionaryWriter, dictionaryProperties, resourcesService).run(null)
 
 
         val expectedSortedContent = listOf("hello", "input", "test", "world")
