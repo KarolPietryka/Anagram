@@ -1,4 +1,4 @@
-package org.zooplus.anagrams.service.boot
+package org.zooplus.anagrams.component.boot
 
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.ApplicationArguments

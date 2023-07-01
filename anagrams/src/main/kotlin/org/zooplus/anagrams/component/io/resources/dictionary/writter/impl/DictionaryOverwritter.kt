@@ -1,11 +1,13 @@
 package org.zooplus.anagrams.component.io.resources.dictionary.writter.impl
 
+import org.springframework.stereotype.Component
 import org.zooplus.anagrams.component.io.resources.dictionary.writter.DictionaryWriter
 import org.zooplus.anagrams.config.props.io.resources.dictionary.DictionaryProperties
 import java.nio.file.FileSystem
 import java.nio.file.Files
 import java.nio.file.Path
 
+@Component
 class DictionaryOverwritter(
     private val fs: FileSystem,
     private val dictionaryProperties: DictionaryProperties,
