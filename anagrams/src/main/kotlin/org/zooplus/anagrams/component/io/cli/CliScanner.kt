@@ -11,9 +11,13 @@ class CliScanner constructor(
     private val anagramSearcher: AnagramSearcher
 ){
     fun scan(){
-        val scanner = Scanner(System.`in`)
-        println("Enter world for anagram")
-        val input = scanner.nextLine()
-        anagramSearcher.getAnagram(input)
+        while(true) {
+            val scanner = Scanner(System.`in`)
+            println("Enter world for anagram")
+            val input = scanner.nextLine()
+            anagramSearcher.getAnagram(input)?.let {
+                println("Anagram of word $input found in dictionaries is $it")
+            } ?: println("No anagram of word $input found")
+        }
     }
 }
