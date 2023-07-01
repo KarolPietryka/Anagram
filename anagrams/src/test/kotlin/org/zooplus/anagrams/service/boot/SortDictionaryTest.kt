@@ -7,10 +7,9 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.mockito.Mock
-import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.springframework.beans.factory.annotation.Qualifier
+import org.zooplus.anagrams.component.boot.SortDictionary
 import org.zooplus.anagrams.component.io.resources.dictionary.reader.DictionaryReader
 import org.zooplus.anagrams.component.io.resources.dictionary.writter.DictionaryWriter
 import org.zooplus.anagrams.config.props.io.resources.dictionary.DictionaryProperties
@@ -52,7 +51,7 @@ internal class SortDictionaryTest {
         Files.write(file2, listOf("test", "input"))
 
         whenever(dictionaryProperties.dictionaryDirPath).thenReturn(dirPath.toString())
-        whenever(dictionaryProperties.sortedDictionaryFileName).thenReturn("sorted.txt")
+        whenever(dictionaryProperties.sortedDictionaryPath).thenReturn("sorted.txt")
 
 
         SortDictionary(dictionaryReader, dictionaryWriter, dictionaryProperties).run(null)

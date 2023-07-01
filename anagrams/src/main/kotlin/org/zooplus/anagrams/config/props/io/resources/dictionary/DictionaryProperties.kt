@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component
 @ConfigurationProperties(prefix = "app.zooplus.resources.dictionary", ignoreUnknownFields = true)
 open class DictionaryProperties {
      open var dictionaryDirPath: String = ""
-     open var sortedDictionaryFileName: String = ""
+     open var sortedDictionaryPath: String = ""
 }

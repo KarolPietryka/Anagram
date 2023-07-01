@@ -7,5 +7,5 @@ app:
         type: "sorted"
     resources:
       dictionary:
-        dictionaryDirPath: "/dictionary"
-        sortedDictionaryFileName: "sorted.txt"
+        dictionaryDirPath: "dictionary"
+        sortedDictionaryPath: "sorted/sorted.txt"

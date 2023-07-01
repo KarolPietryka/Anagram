@@ -17,12 +17,12 @@ import org.zooplus.anagrams.config.props.io.resources.dictionary.DictionaryPrope
 @Profile("!test")
 class SortDictionary(
     private val dictionaryReader: DictionaryReader,
-    @Qualifier("sortedDictionaryWriter")
+    @Qualifier("dictionaryAdder")
     private val dictionaryWriter: DictionaryWriter,
     private val dictionaryProperties: DictionaryProperties,
 ): ApplicationRunner {
     override fun run(args: ApplicationArguments?) {
         val sortedContent = dictionaryReader.getFromDirectory().dictionaryContent.sorted()
-        dictionaryWriter.write(sortedContent, dictionaryProperties.sortedDictionaryFileName)
+        dictionaryWriter.write(sortedContent, dictionaryProperties.sortedDictionaryPath)
     }
 }
