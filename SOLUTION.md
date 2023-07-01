@@ -38,4 +38,4 @@ UnsortedMode - This mode executes a straightforward search, scanning each word a
 
 # Usage
 
-![img.png](img.png){ width=50% }
+![img.png](img.png)
