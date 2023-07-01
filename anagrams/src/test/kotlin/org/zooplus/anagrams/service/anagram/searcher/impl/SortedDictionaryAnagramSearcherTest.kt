@@ -38,4 +38,14 @@ internal class SortedDictionaryAnagramSearcherTest {
         val anagram = searcher.getAnagram("astronomer")
         assertEquals("moon starer", anagram)
     }
+
+    @Test
+    fun `only input included`() {
+        val words = listOf("astronomer")
+        val sortedWords = words.sortedWith(compareByDescending { it.length })
+        val directoryContent = DirectoryContent(sortedWords)
+        whenever(directoryReader.getFromDirectory()).thenReturn(directoryContent)
+        val anagram = searcher.getAnagram("astronomer")
+        assertEquals(null, anagram)
+    }
 }

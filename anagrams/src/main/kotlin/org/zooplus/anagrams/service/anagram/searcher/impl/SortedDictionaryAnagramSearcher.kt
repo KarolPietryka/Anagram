@@ -10,7 +10,7 @@ class SortedDictionaryAnagramSearcher(
 ): AbstractAnagramSearcher(directoryReader) {
     override fun getAnagram(input: String, directoryContent: DirectoryContent): String? {
         directoryContent.dictionaryContent.forEach {
-            if (AnagramChecker.check(input, it)) {
+            if (input != it && AnagramChecker.check(input, it)) {
                 return it
             }
         }
